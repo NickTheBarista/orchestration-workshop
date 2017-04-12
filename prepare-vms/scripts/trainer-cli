@@ -75,15 +75,13 @@ pull_tag(){
 
     # Pre-pull a bunch of images
     pssh --timeout 900 'for I in \
-            debian:latest \
             ubuntu:latest \
-            fedora:latest \
-            centos:latest \
             postgres \
             redis \
             training/namer \
-            nathanleclaire/redisonrails; do
-        sudo -u docker docker pull $I
+	    rheinwein/inotifywait \
+            nathanleclaire/redisonrails; do    
+    sudo -u docker docker pull $I
     done'
 
     echo "Finished pulling images for $TAG"
