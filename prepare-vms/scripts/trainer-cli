@@ -79,8 +79,8 @@ pull_tag(){
             postgres \
             redis \
             training/namer \
-	    rheinwein/inotifywait \
-            nathanleclaire/redisonrails; do    
+	    dockersamples/visualizer \
+	    rheinwein/inotifywait; do    
     sudo -u docker docker pull $I
     done'
 

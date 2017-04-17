@@ -118,6 +118,9 @@ system("sudo apt-get -qy install git jq python-pip")
 # increase the size of the conntrack table so we don't blow it up when going crazy with http load testing
 system("echo 1000000 | sudo tee /proc/sys/net/nf_conntrack_max")
 
+# clone visualizer
+system("git clone https://github.com/dockersamples/docker-swarm-visualizer.git")
+
 #######################
 ### DOCKER INSTALLS ###
 #######################
