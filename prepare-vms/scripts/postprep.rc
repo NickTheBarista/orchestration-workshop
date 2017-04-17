@@ -59,9 +59,9 @@ system("curl --silent {} > /tmp/ipv4".format(ipv4_retrieval_endpoint))
 
 ipv4 = open("/tmp/ipv4").read()
 
-# Add a "docker" user with password "training"
+# Add a "docker" user with password "dockercon"
 system("sudo useradd -d /home/docker -m -s /bin/bash docker")
-system("echo docker:training | sudo chpasswd")
+system("echo docker:dockercon | sudo chpasswd")
 
 # Helper for Docker prompt.
 system("""sudo tee /usr/local/bin/docker-prompt <<SQRL
@@ -113,7 +113,10 @@ system("sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /e
 
 system("sudo service ssh restart")
 system("sudo apt-get -q update")
-system("sudo apt-get -qy install git jq python-pip")
+system("sudo apt-get -qy install git jq python-pip awscli")
+
+# clone visualizer
+system("git clone https://github.com/dockersamples/docker-swarm-visualizer.git")
 
 # increase the size of the conntrack table so we don't blow it up when going crazy with http load testing
 system("echo 1000000 | sudo tee /proc/sys/net/nf_conntrack_max")
