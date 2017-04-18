@@ -78,9 +78,11 @@ pull_tag(){
             ubuntu:latest \
             postgres \
             redis \
+            golang:latest \
             training/namer \
-	    dockersamples/visualizer \
-	    rheinwein/inotifywait; do    
+            golang \
+            dockersamples/visualizer \
+	        rheinwein/inotifywait; do    
     sudo -u docker docker pull $I
     done'
 

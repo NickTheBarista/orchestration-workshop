@@ -118,9 +118,6 @@ system("sudo apt-get -qy install git jq python-pip awscli")
 # increase the size of the conntrack table so we don't blow it up when going crazy with http load testing
 system("echo 1000000 | sudo tee /proc/sys/net/nf_conntrack_max")
 
-# clone visualizer
-system("git clone https://github.com/dockersamples/docker-swarm-visualizer.git")
-
 #######################
 ### DOCKER INSTALLS ###
 #######################
@@ -147,6 +144,13 @@ system("while ! sudo -u docker docker version ; do sleep 2; done")
 ### Install Swarm
 system("docker pull swarm:{}".format(SWARM_VERSION))
 system("docker tag -f swarm:{} swarm".format(SWARM_VERSION))
+
+### Clone Demo Repos
+system("git clone https://github.com/dockersamples/docker-swarm-visualizer.git")
+system("git clone https://github.com/docker/example-voting-app.git")
+
+### Go get the rafttool
+system("docker run -v /tmp/raft-demo:/go/bin golang go get github.com/docker/swarmkit/cmd/...")
 
 ### BEGIN CLUSTERING ###
 
